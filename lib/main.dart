@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_tut/user.dart';
 import 'package:http/http.dart' as http;
-
 import 'home_screen.dart';
+import 'dart:convert';
 
 // Providers
 // Provider: provides data to widgets and other providers
@@ -12,8 +12,10 @@ import 'home_screen.dart';
 
 // future providers
 final fetchUserProvider = FutureProvider((ref) {
-  const url = 'https/jsonplaceholder.typicode.com/users/1';
-  return http.get(Uri.parse(url));
+  const url = 'https://jsonplaceholder.typicode.com/users/1';
+  return http
+      .get(Uri.parse(url))
+      .then((value) => User.fromJson(jsonDecode(value.body)));
 });
 
 void main() {
