@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_tut/user.dart';
-import 'package:http/http.dart' as http;
 import 'home_screen.dart';
-import 'dart:convert';
 
 // Providers
 // Provider: provides data to widgets and other providers
 // StateProvider: update the value from the outside/used to modify simple values
 // StateNotifier & StateNotifierProvider
 
-// future providers
-final fetchUserProvider = FutureProvider((ref) {
-  const url = 'https://jsonplaceholder.typicode.com/users/1';
-  return http
-      .get(Uri.parse(url))
-      .then((value) => User.fromJson(jsonDecode(value.body)));
+final userProvider = Provider((ref) {
+  return const User(name: "Satish", username: "Satish");
+});
+
+final fetchSomeDataProvider = StreamProvider((ref) async* {
+  // return;
+  yield [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 });
 
 void main() {

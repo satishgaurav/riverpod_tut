@@ -1,8 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_tut/main.dart';
 
 class MyHomePage extends ConsumerWidget {
@@ -14,38 +11,26 @@ class MyHomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(fetchUserProvider);
-    return user.when(
-      data: (data) {
-        return Scaffold(
-          appBar: AppBar(),
-          body: Column(children: [
-            Center(
-              child: Text(data.name),
-            )
-          ]),
-        );
-      },
-      error: (error, stackTrace) {
-        return Scaffold(
-          appBar: AppBar(),
-          body: Column(children: [
-            Center(
-              child: Text("error"),
-            )
-          ]),
-        );
-      },
-      loading: () {
-        return Scaffold(
-          appBar: AppBar(),
-          body: Column(children: [
-            Center(
-              child: Text("loading"),
-            )
-          ]),
-        );
-      },
+    // final user = ref.watch(userProvider);
+
+    return Scaffold(
+      body: ref.watch(fetchSomeDataProvider).when(
+        data: (data) {
+          return Center(
+            child: Text(data.toString()),
+          );
+        },
+        error: ((error, stackTrace) {
+          return Center(
+            child: Text(error.toString()),
+          );
+        }),
+        loading: () {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
     );
   }
 }
