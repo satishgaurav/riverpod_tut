@@ -6,25 +6,27 @@ import 'package:riverpod_tut/main.dart';
 class MyHomePage extends ConsumerWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
+  void onSubmit(WidgetRef ref, String value){
+    ref.read(userProvider.notifier).updateName(value);
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final name = ref.watch(nameProvider);
-    final nameRead = ref.read(nameProvider);
-    /*
-    diff between read and watch:
-    read: only read once, after that even if there in change in provider,
-    it won't update the widgets. not recommended to use inside of build method
+    final user = ref.watch(userProvider);
 
-    watch: it will constantly listen to the change in value.
-    */
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Satish"),
+        title: Text(user.name),
       ),
       body: Column(
             children: [
+              TextField(
+                onSubmitted: (value){
+                  onSubmit(ref, value);
+                },
+              ),
               Center(
-                child: Text(name),
+                child: Text(user.age.toString()),
               )
             ],
       ),
