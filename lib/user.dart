@@ -22,14 +22,16 @@ class User with _$User {
 
 // user notifer is a class
 // this will contain the methods to update the varialbe in the user
-//
 class UserNotifier extends StateNotifier<User> {
-  UserNotifier(super.state);
+  UserNotifier()
+      : super(
+          const User(name: "", age: 0),
+        ) {
+    updateName("Satish");
+    updateAge(2);
+  }
 
   void updateName(String name) {
-    // this is one way to modify the state
-    // however it will cummbersome if no. of fields were more
-    // state = User(name: name, age: state.age);
     state = state.copyWith(name: name);
   }
 

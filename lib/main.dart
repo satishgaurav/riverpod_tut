@@ -14,8 +14,8 @@ import 'home_screen.dart';
 
 // first return type is the class we are returning and
 // second is the state of the class
-final userProvider = StateNotifierProvider<UserNotifier, User>(
-    (ref) => UserNotifier(const User(name: "", age: 0)));
+final userProvider =
+    StateNotifierProvider<UserNotifier, User>((ref) => UserNotifier());
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
