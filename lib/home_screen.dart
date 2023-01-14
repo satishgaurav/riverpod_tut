@@ -16,8 +16,13 @@ class MyHomePage extends ConsumerWidget {
     return Scaffold(
       body: ref.watch(fetchSomeDataProvider).when(
         data: (data) {
-          return Center(
-            child: Text(data.toString()),
+          return Column(
+            // main axis alignment
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(child: Text(data.toString())),
+              Center(child: Text(data.sublist(1, 4).toString())),
+            ],
           );
         },
         error: ((error, stackTrace) {

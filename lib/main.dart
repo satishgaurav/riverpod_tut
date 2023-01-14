@@ -13,7 +13,6 @@ final userProvider = Provider((ref) {
 });
 
 final fetchSomeDataProvider = StreamProvider((ref) async* {
-  // return;
   yield [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 });
 
