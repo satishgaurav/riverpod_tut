@@ -8,13 +8,17 @@ import 'home_screen.dart';
 // StateProvider: update the value from the outside/used to modify simple values
 // StateNotifier & StateNotifierProvider
 
-final userProvider = Provider((ref) {
-  return const User(name: "Satish", username: "Satish");
-});
+// final userProvider = Provider((ref) {
+//   return const User(name: "Satish", username: "Satish");
+// });
 
-final fetchSomeDataProvider = StreamProvider((ref) async* {
-  yield [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-});
+// final fetchSomeDataProvider = StreamProvider((ref) async* {
+//   yield [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// });
+
+final userProvider = StateProvider<String?>((ref) => null);
+
+// final userProvider = Provider((ref) => "User");
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
