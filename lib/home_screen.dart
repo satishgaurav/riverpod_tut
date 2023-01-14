@@ -6,7 +6,7 @@ class MyHomePage extends ConsumerWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   void onSubmit(WidgetRef ref, String value) {
-    ref.read(userProvider.notifier).state = value;
+    ref.read(userProvider.notifier).update((state) => value);
   }
 
   @override
