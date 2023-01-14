@@ -14,7 +14,7 @@ part 'user.g.dart';
 class User with _$User {
   const factory User({
     required String name,
-    required String age,
+    required int age,
   }) = _User;
 
   factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);
@@ -27,6 +27,13 @@ class UserNotifier extends StateNotifier<User> {
   UserNotifier(super.state);
 
   void updateName(String name) {
-    state = User(name: name, age: state.age);
+    // this is one way to modify the state
+    // however it will cummbersome if no. of fields were more
+    // state = User(name: name, age: state.age);
+    state = state.copyWith(name: name);
+  }
+
+  void updateAge(int age) {
+    state = state.copyWith(age: age);
   }
 }

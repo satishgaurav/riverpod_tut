@@ -6,15 +6,20 @@ class MyHomePage extends ConsumerWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   void onSubmit(WidgetRef ref, String value) {
-    ref.read(userProvider.notifier).update((state) => value);
+    ref.read(userProvider.notifier).updateName(value);
+  }
+
+  void onSubmitAge(WidgetRef ref, String value) {
+    ref.read(userProvider.notifier).updateAge(int.parse(value));
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(userProvider) ?? 'Please pass some value';
+    // final user = ref.watch(userProvider) ?? 'Please pass some value';
+    final user = ref.watch(userProvider);
     return Scaffold(
       appBar: AppBar(
-        title: Text(user),
+        title: Text(user.name),
       ),
       body: Column(
         children: [
@@ -24,8 +29,13 @@ class MyHomePage extends ConsumerWidget {
               onSubmit(ref, value);
             },
           ),
+          TextField(
+            onSubmitted: (value) {
+              onSubmitAge(ref, value);
+            },
+          ),
           Center(
-            child: Text(user),
+            child: Text(user.age.toString()),
           )
         ],
       ),

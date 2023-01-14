@@ -21,7 +21,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$User {
   String get name => throw _privateConstructorUsedError;
-  String get age => throw _privateConstructorUsedError;
+  int get age => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +33,7 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({String name, String age});
+  $Res call({String name, int age});
 }
 
 /// @nodoc
@@ -60,7 +60,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       age: null == age
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ) as $Val);
   }
 }
@@ -71,7 +71,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$_UserCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String age});
+  $Res call({String name, int age});
 }
 
 /// @nodoc
@@ -94,7 +94,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
       age: null == age
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
   }
 }
@@ -109,7 +109,7 @@ class _$_User with DiagnosticableTreeMixin implements _User {
   @override
   final String name;
   @override
-  final String age;
+  final int age;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -153,7 +153,7 @@ class _$_User with DiagnosticableTreeMixin implements _User {
 }
 
 abstract class _User implements User {
-  const factory _User({required final String name, required final String age}) =
+  const factory _User({required final String name, required final int age}) =
       _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
@@ -161,7 +161,7 @@ abstract class _User implements User {
   @override
   String get name;
   @override
-  String get age;
+  int get age;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
