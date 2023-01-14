@@ -5,26 +5,27 @@ import 'package:riverpod_tut/main.dart';
 class MyHomePage extends ConsumerWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
-  // void onSubmit(WidgetRef ref, String value) {
-  //   ref.read(userProvider.notifier).updateName(value);
-  // }
+  void onSubmit(WidgetRef ref, String value) {
+    ref.read(userProvider.notifier).state = value;
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(userProvider);
+    final user = ref.watch(userProvider) ?? 'Please pass some value';
     return Scaffold(
       appBar: AppBar(
-        title: Text(user ?? 'Sat'),
+        title: Text(user),
       ),
       body: Column(
         children: [
           TextField(
-              // onSubmitted: () {
-
-              // },
-              ),
+            onSubmitted: (value) {
+              // ref.watch(userProvider.notifier).state = value;
+              onSubmit(ref, value);
+            },
+          ),
           Center(
-            child: Text(user ?? "Good"),
+            child: Text(user),
           )
         ],
       ),
