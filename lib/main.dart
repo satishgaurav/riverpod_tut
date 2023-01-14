@@ -6,18 +6,10 @@ import 'home_screen.dart';
 // Providers
 // Provider: provides data to widgets and other providers
 // StateProvider: update the value from the outside/used to modify simple values
-// StateNotifier & StateNotifierProvider
+// StateNotifier & StateNotifierProvider:
+// to update the complex state  like modifying a value inside a class
 
-// final userProvider = Provider((ref) {
-//   return const User(name: "Satish", username: "Satish");
-// });
-
-// final fetchSomeDataProvider = StreamProvider((ref) async* {
-//   yield [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-// });
-
-final userProvider = StateProvider<String?>((ref) => null);
-
+// final userProvider = StateProvider<String?>((ref) => null);
 // final userProvider = Provider((ref) => "User");
 
 void main() {
